@@ -15,8 +15,8 @@ import { createMint, mintTo } from "spl-token-bankrun";
 import { PublicKey, Keypair } from "@solana/web3.js";
 import NodeWallet from "@coral-xyz/anchor/dist/cjs/nodewallet";
 
-import IDL from "../target/idl/vesting.json";
-import { Vesting } from "../target/types/vesting";
+import IDL from "../target/idl/yyy.json";
+import { Yyy } from "../target/types/yyy";
 import { SYSTEM_PROGRAM_ID } from "@coral-xyz/anchor/dist/cjs/native/system";
 
 describe("Vesting Smart Contract Tests", () => {
@@ -26,12 +26,12 @@ describe("Vesting Smart Contract Tests", () => {
   let treasuryTokenAccount: PublicKey;
   let employeeAccount: PublicKey;
   let provider: BankrunProvider;
-  let program: Program<Vesting>;
+  let program: Program<Yyy>;
   let banksClient: BanksClient;
   let employer: Keypair;
   let mint: PublicKey;
   let beneficiaryProvider: BankrunProvider;
-  let program2: Program<Vesting>;
+  let program2: Program<Yyy>;
   let context: ProgramTestContext;
 
   beforeAll(async () => {
@@ -57,7 +57,7 @@ describe("Vesting Smart Contract Tests", () => {
 
     anchor.setProvider(provider);
 
-    program = new Program<Vesting>(IDL as Vesting, provider);
+    program = new Program<Yyy>(IDL as Yyy, provider);
 
     banksClient = context.banksClient;
 
@@ -71,7 +71,7 @@ describe("Vesting Smart Contract Tests", () => {
     beneficiaryProvider = new BankrunProvider(context);
     beneficiaryProvider.wallet = new NodeWallet(beneficiary);
 
-    program2 = new Program<Vesting>(IDL as Vesting, beneficiaryProvider);
+    program2 = new Program<Yyy>(IDL as Yyy, beneficiaryProvider);
 
     // Derive PDAs
     [vestingAccountKey] = PublicKey.findProgramAddressSync(

@@ -4,12 +4,12 @@ import { useWallet } from '@solana/wallet-adapter-react'
 import { WalletButton } from '../solana/solana-provider'
 import { AppHero, ellipsify } from '../ui/ui-layout'
 import { ExplorerLink } from '../cluster/cluster-ui'
-import { useYyyProgram } from './yyy-data-access'
-import { YyyCreate, YyyList } from './yyy-ui'
+import { useVestingProgram } from './yyy-data-access'
+import { VestingCreate, VestingList } from './yyy-ui'
 
 export default function YyyFeature() {
   const { publicKey } = useWallet()
-  const { programId } = useYyyProgram()
+  const { programId } = useVestingProgram()
 
   return publicKey ? (
     <div>
@@ -22,9 +22,9 @@ export default function YyyFeature() {
         <p className="mb-6">
           <ExplorerLink path={`account/${programId}`} label={ellipsify(programId.toString())} />
         </p>
-        <YyyCreate />
+        <VestingCreate />
       </AppHero>
-      <YyyList />
+      <VestingList />
     </div>
   ) : (
     <div className="max-w-4xl mx-auto">
